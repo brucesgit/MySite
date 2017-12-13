@@ -1,0 +1,12 @@
+// tslint.json
+{
+    "extends": "tslint-config-airbnb-base",
+    "globals": {
+        "require": true
+    },
+    "rules": {
+        "no-consecutive-blank-lines": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    }
+}
