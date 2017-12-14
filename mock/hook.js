@@ -2,16 +2,16 @@
  * Created by ued on 2016/11/12.
  */
 
-var mockPolicy = require('../../mock/index');
+var mockPolicy = require('../config/mock/index');
 
-module.exports = function (proxyReq, req, res, options) {
+module.exports = function(proxyReq, req, res, options) {
     var data = new Buffer(0);
 
-    req.on('data', function (chunk) {
+    req.on('data', function(chunk) {
         data = Buffer.concat([data, chunk]);
     });
 
-    req.on('end', function () {
+    req.on('end', function() {
         // 这里再根据情况判断是不是要本地mock数据
         var option = {
             path: req.path,
