@@ -31,11 +31,12 @@ module.exports = {
             config.build.assetsPublicPath : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json', '.ts', '.tsx'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('src'),
-        }
+            '@src': resolve('src'),
+            '@assets': '@src/assets'
+        },
+        extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
     },
     module: {
         rules: [
@@ -57,6 +58,10 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('src'), resolve('test')]
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

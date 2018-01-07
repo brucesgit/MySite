@@ -17,6 +17,11 @@
         "sourceMap": true,
         "pretty": true,
         "experimentalDecorators": true,
-        "allowJs": true
+        "allowJs": true,
+        "baseUrl": "./",
+        "paths": {
+            "@src/*":["src/*"],
+            "@assets/*": ["src/assets/*"]
+        }
     }
 }
