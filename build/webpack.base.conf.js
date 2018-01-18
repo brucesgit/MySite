@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const postcssConfig = require('./postcss.config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve(dir) {
@@ -33,8 +34,7 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@src': resolve('src'),
-            '@assets': '@src/assets'
+            'src': resolve('src')
         },
         extensions: ['.js', '.vue', '.json', '.ts', '.tsx']
     },
@@ -62,6 +62,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ["style", "css", "sass"]
+            },
+            {
+                test: /\.(css|scss)$/,
+                loader: "style-loader!css-loader!postcss-loader!sass-loader",
+                options: {
+                    postcss: postcssConfig
+                }
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
